@@ -1,17 +1,12 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
-
 makeCacheMatrix <- function(x = matrix()) {
-    i <- NULL
+  m <- NULL
   set <- function(y) {
-          x <<- y
-          i <<- NULL
+    x <<- y
+    m <<- NULL
   }
   get <- function() x
-  setinverse <- function(inverse) i <<- inverse
-  getinverse <- function() i
+  setinverse <- function(inverse) m <<- inverse
+  getinverse <- function() m
   list(set = set,
        get = get,
        setinverse = setinverse,
@@ -19,16 +14,16 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
-
 cacheSolve <- function(x, ...) {
-  i <- x$getinverse()
-  if (!is.null(i)) {
-          message("getting cached data")
-          return(i)
+  m <- x$getinverse()
+  if (!is.null(m)) {
+    message("getting cached data")
+    return(m)
   }
   data <- x$get()
-  i <- solve(data, ...)
-  x$setinverse(i)
-  i
+  m <- solve(data, ...)
+  x$setinverse(m)
+  m
 }
+
+
